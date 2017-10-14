@@ -1,0 +1,37 @@
+<div class="presentation">
+<div class="row">
+  <% @product_list.each_with_index do |products, index| %>
+  <% if (index % 3 === 0 && index > 1) %>
+  </div>
+  <br />
+  <div class="row">
+  <% end %>
+
+  <div class="col-lg-4 col-md-4">
+  <table class="table">
+    <tr>
+      <th colspan="2" align="left"><h3><a href="/pt/<%= products.ptid %>"><%= products.name %></a></h3> </th>
+      <th>LSRP</th>
+    </tr>
+    <% products.pro.each_with_index do |p, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td>
+            <strong><%= p.brand_name %></strong><br />
+            <%= p.product_name %>
+          </td>
+          <td>$<%= p.sell_price/100 %>.00</td>
+        </tr>
+    <% end %>
+  </table>
+    <div class="smaller">
+      * Unit Sales - Last 7 Days<br />
+    </div>
+    <div class="smaller">
+      <a href="/pt/<%= products.ptid %>">Show more top selling <%= products.name %> products...</a>
+    </div>
+
+  </div>
+  <% end %>
+</div>
+</div>
